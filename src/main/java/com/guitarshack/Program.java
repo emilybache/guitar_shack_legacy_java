@@ -2,7 +2,7 @@ package com.guitarshack;
 
 public class Program {
 
-    private static StockMonitor monitor = new StockMonitor(product -> {
+    public static StockMonitor monitor = new StockMonitor(product -> {
         // We are faking this for now
         System.out.println(
                 "You need to reorder product " + product.getId() +
@@ -14,5 +14,6 @@ public class Program {
         int quantity = Integer.parseInt(args[1]);
 
         monitor.productSold(productId, quantity);
+        System.out.println("program finished");
     }
 }
