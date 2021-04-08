@@ -14,5 +14,6 @@ public class Program {
         int quantity = Integer.parseInt(args[1]);
 
         monitor.productSold(productId, quantity);
+        System.out.println("program finished");
     }
 }
