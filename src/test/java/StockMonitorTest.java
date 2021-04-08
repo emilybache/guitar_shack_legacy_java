@@ -19,16 +19,13 @@ public class StockMonitorTest {
         StockMonitor monitor = new StockMonitor(product -> {
             message.set("You need to reorder product " + product.getId() +
                     ". Only " + product.getStock() + " remaining in stock");
-        }, new Backend() {
-            @Override
-            public String queryBackend(String url) {
-                if (url.contains("sales") ) {
-                    return "{ \"total\": 53 }";
-                } else if (url.contains("product")) {
-                    return "{ \"stock\": 53,  \"id\": 811, \"leadTime\": 53}";
-                }
-                return null;
+        }, url -> {
+            if (url.contains("sales") ) {
+                return "{ \"total\": 53 }";
+            } else if (url.contains("product")) {
+                return "{ \"stock\": 53,  \"id\": 811, \"leadTime\": 53}";
             }
+            return null;
         });
 
         monitor.productSold(productId, quantity);
@@ -49,16 +46,13 @@ public class StockMonitorTest {
         StockMonitor monitor = new StockMonitor(product -> {
             message.set("You need to reorder product " + product.getId() +
                     ". Only " + product.getStock() + " remaining in stock");
-        }, new Backend() {
-            @Override
-            public String queryBackend(String url) {
-                if (url.contains("sales") ) {
-                    return "{ \"total\": 53 }";
-                } else if (url.contains("product")) {
-                    return "{ \"stock\": 53,  \"id\": 811, \"leadTime\": 3}";
-                }
-                return null;
+        }, url -> {
+            if (url.contains("sales") ) {
+                return "{ \"total\": 53 }";
+            } else if (url.contains("product")) {
+                return "{ \"stock\": 53,  \"id\": 811, \"leadTime\": 3}";
             }
+            return null;
         });
 
         monitor.productSold(productId, quantity);
