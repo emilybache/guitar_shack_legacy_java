@@ -13,9 +13,9 @@ public class StockMonitor {
     private final Alert alert;
     private Backend backend;
 
-    public StockMonitor(Alert alert) {
+    public StockMonitor(Alert alert, Backend backend) {
         this.alert = alert;
-        backend = new Backend();
+        this.backend = backend;
     }
 
     public void productSold(int productId, int quantity) {
