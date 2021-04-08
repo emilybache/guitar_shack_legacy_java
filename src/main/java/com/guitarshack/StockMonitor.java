@@ -11,10 +11,11 @@ import java.util.Map;
 
 public class StockMonitor {
     private final Alert alert;
-    private Backend backend = new Backend();
+    private Backend backend;
 
     public StockMonitor(Alert alert) {
         this.alert = alert;
+        backend = new Backend();
     }
 
     public void productSold(int productId, int quantity) {
